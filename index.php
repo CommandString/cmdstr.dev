@@ -2,7 +2,6 @@
 
 use CommandString\CookieEncryption\Encryption;
 use CommandString\Cookies\CookieController;
-use CommandString\Pdo\Driver;
 use eftec\bladeone\BladeOne;
 use React\Socket\SocketServer;
 use Router\Http\Router;
@@ -26,14 +25,6 @@ $env = Env::createFromJsonFile(__DIR__."/env.json");
 # |    \_ |_____| |_____|    |    |______ |    \_  #
 
 $router = new Router(new SocketServer("{$env->server->ip}:{$env->server->port}"), $env->server->dev);
-
-#  ______  _______ _______ _______ ______  _______ _______ _______ #
-# |     \ |_____|    |    |_____| |_____] |_____| |______ |______ #
-# |_____/ |     |    |    |     | |_____] |     | ______| |______ #
-
-if ($env->database->enabled) {
-    $env->driver = Driver::createMySqlDriver($env->database->username, $env->database->password, $env->database->name, $env->database->host, $env->database->port)->connect();
-}
 
 #  _______  _____   _____  _     _ _____ _______ _______ #
 # |       |     | |     | |____/    |   |______ |______ #
