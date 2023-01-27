@@ -1,0 +1,16 @@
+{
+    "require": {
+        "commandstring/router": "^2.1",
+        "commandstring/env": "^1.0",
+        "commandstring/pdo": "^2.0",
+        "commandstring/reactphp-cookies": "^1.0",
+        "commandstring/cookie-encryption": "^3.0",
+        "eftec/bladeone": "^4.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Routes\\": "./routes",
+            "Common\\": "./common"
+        }
+    }
+}
