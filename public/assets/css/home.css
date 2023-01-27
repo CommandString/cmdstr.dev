@@ -1,9 +1,0 @@
-.segment {
-    height: 100vh;
-    border-radius: 0 !important;
-    padding-top: 300px !important;
-}
-
-.ui.header {
-    display: none;
-}
