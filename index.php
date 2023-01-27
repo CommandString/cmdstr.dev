@@ -13,11 +13,6 @@ require_once __DIR__ . "/vendor/autoload.php";
 # |______ | \  |  \  /    |   |_____/ |     | | \  | |  |  | |______ | \  |    |     #
 # |______ |  \_|   \/   __|__ |    \_ |_____| |  \_| |  |  | |______ |  \_|    |     #
 
-if (!file_exists(__DIR__."/env.json")) {
-    file_put_contents(__DIR__."/env.json", file_get_contents(__DIR__."/env.example.json"));
-    echo "Environment configuration does not exist, creating env.json!\n";
-}
-
 $env = Env::createFromJsonFile(__DIR__."/env.json");
 
 #  ______  _____  _     _ _______ _______  ______  #
@@ -30,9 +25,7 @@ $router = new Router(new SocketServer("{$env->server->ip}:{$env->server->port}")
 # |       |     | |     | |____/    |   |______ |______ #
 # |_____  |_____| |_____| |    \_ __|__ |______ ______| #
 
-if ($env->cookies->enabled) {
-    $env->cookie = new CookieController(new Encryption($env->cookies->encryption_passphrase, $env->cookies->encryption_algo));
-}
+$env->cookie = new CookieController(new Encryption($env->cookies->encryption_passphrase, $env->cookies->encryption_algo));
 
 # ______         _______ ______  _______  _____  __   _ _______
 # |_____] |      |_____| |     \ |______ |     | | \  | |______
