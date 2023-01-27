@@ -4,9 +4,7 @@
         ".git",
         ".idea"
     ],
-    "execMap": {
-        "php": "php"
-    },
+    "exec": "cd scss && php compile.php && cd ../ && php index.php",
     "restartable": "r",
     "ext": "php,html,json"
 }
