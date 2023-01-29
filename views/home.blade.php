@@ -1,11 +1,50 @@
 @extends('templates.basic')
 
 @section('head')
-<title>Command_String</title>
+    <title>Command_String</title>
+    <link rel="stylesheet" href="/assets/css/home.css">
 @endsection
 
 @section('body')
-<div id="nametag">
-    <img class="ui large avatar image" src="/assets/img/logo.png">
-</div>
+    <div>
+        <div id="nametag">
+            <img class="ui image" src="/assets/img/logo.png">
+            <div>
+                <p>Command_String</p>
+                <p>Michael Snedeker</p>
+            </div>
+        </div>
+        <div id="iam">
+            <span>I am</span>
+        </div>
+        <div id="contact" class="ui equal width grid">
+            <div class="column">
+                <span><i class="envelope icon"></i> {{ $contact["email"] }}</span>
+            </div>
+            <div class="column">
+                <span><i class="discord icon"></i> {{ $contact["discord"] }}</span>
+                <img src="https://lanyard.cnrad.dev/api/232224992908017664" alt="Discord Status">
+            </div>
+        </div>
+        <div id="buttons" class="ui equal width grid">
+            <div class="row">
+                @php
+                    $buttonCount = 0;
+                @endphp
+                @foreach ($buttons as $name => $href)
+                    @php
+                        $buttonCount++;
+                    @endphp
+                    @if ($buttonCount === 4 || $buttonCount === 7)
+                        </div><div class="row">
+                    @endif
+                    <a href="{{ $href }}" @if (!str_starts_with($href, "/")) target="_blank" @endif class="column">
+                        <div class="ui inverted horizontal divider">
+                            {{ $name }}
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    </div>
 @endsection

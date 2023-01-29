@@ -1,0 +1,101 @@
+body {
+  background-color: black;
+}
+body > div {
+  background: linear-gradient(90deg, #000000, #8800FF60, #000000) !important;
+  min-height: 100vh;
+  padding: 0 30px;
+}
+#nametag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  border-radius: 0 !important;
+}
+#nametag > img {
+  width: 250px;
+  height: auto;
+}
+#nametag > div {
+  margin-left: 30px;
+}
+#nametag > div p {
+  margin: -10px 0;
+  color: white;
+}
+#nametag > div p:nth-child(1) {
+  font-weight: bold;
+  font-size: 40px;
+}
+#nametag > div > p:nth-child(2) {
+  font-size: 25px;
+  opacity: 0.5;
+}
+#buttons .column {
+  background: linear-gradient(transparent 50%, #8800FF);
+  background-size: 200% 200%;
+  border-width: 1px;
+  border-color: white;
+  border-style: solid;
+  padding: 15px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+#buttons .column > div {
+  font-size: 1.5em !important;
+}
+#buttons div.row + div.row {
+  margin-top: -30px;
+}
+#buttons .column:hover {
+  background-position-y: 100%;
+}
+#iam {
+  text-align: center;
+}
+#iam > span {
+  color: white;
+  opacity: 0.5;
+  font-size: 30px;
+}
+#contact {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+#contact > div {
+  height: 100px;
+  line-height: 50px;
+  height: fit-content;
+}
+#contact > div > span {
+  color: white;
+  font-size: 35px;
+}
+#contact > div:nth-child(2) {
+  text-align: right;
+}
+#contact > div:nth-child(2) > span {
+  z-index: 1;
+}
+#contact > div:nth-child(2) span:hover + img {
+  opacity: 1;
+}
+#contact > div:nth-child(2) > img {
+  position: absolute;
+  transition: 0.5s;
+  right: 0;
+  bottom: 100px;
+}
+@media (max-width: 1650px) {
+  #contact > div:nth-child(2) > img {
+    opacity: 0;
+  }
+  #contact > div:nth-child(2) span {
+    text-decoration: underline;
+  }
+}
+::selection {
+  background: #8800FF;
+  color: black;
+}
