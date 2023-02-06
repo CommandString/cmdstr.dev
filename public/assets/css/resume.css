@@ -1,0 +1,34 @@
+body {
+  background-color: black;
+}
+body > div {
+  min-height: 100vh;
+  background: linear-gradient(90deg, #8800FF60, black, black, black, black, black, black, black, black, #8800FF60) !important;
+}
+body > div > .segment {
+  min-height: 100vh;
+  width: 80%;
+  margin: auto !important;
+  background-color: transparent !important;
+}
+body > div > .segment .massive.header {
+  font-size: 35px !important;
+}
+body > div > .segment #name {
+  transition: 1s !important;
+}
+body > div > .segment #name > .image {
+  width: 100px;
+  border-radius: 10px;
+  transition: inherit !important;
+}
+body > div > .segment #name > span {
+  font-size: 50px !important;
+  transition: inherit !important;
+}
+body > div > .segment li {
+  font-size: 1.5em;
+}
+body > div > .segment li + li {
+  margin-top: 5px;
+}
