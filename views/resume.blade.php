@@ -115,7 +115,7 @@
                     <ul>
                         <li>High Schoolers are assigned students in the elementary schools to keep in contact with and to also serve as role models.</li>
                     </ul>
-                    <span class="ui big text"><b><a href="https://github.com/discord-php/DiscordPHP">DiscordPHP</a> Collaborator</b></span><br>
+                    <span class="ui big text"><b><a href="https://github.com/discord-php/DiscordPHP" target="_blank">DiscordPHP</a> Collaborator</b></span><br>
                     <ul>
                         <li>DiscordPHP is a bot API wrapper written in PHP.</li>
                     </ul>
