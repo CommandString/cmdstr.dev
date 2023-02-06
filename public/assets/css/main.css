@@ -39,3 +39,18 @@ a {
 a:hover {
   color: #ca2bff !important;
 }
+#back {
+  --pos: 30px;
+  position: fixed;
+  font-size: 25px;
+  right: calc(var(--pos) - 20px);
+  bottom: var(--pos);
+  opacity: 0.4;
+  transition: 0.3s;
+}
+#back:hover {
+  opacity: 1;
+}
+#back:hover > a {
+  color: #8800FF !important;
+}

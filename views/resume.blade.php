@@ -7,6 +7,9 @@
 
 @section('body')
 <div>
+    <div id="back">
+        <a href="/"><i class="arrow big alternate circle left icon"></i></a>
+    </div>
     <div class="ui inverted segment">
         <div class="ui grid">
             <div ignore="yes" class="row">
@@ -16,7 +19,7 @@
                         <span>R. Michael Snedeker</span>
                     </h1>
                     <h1 class="ui inverted right floated header">
-                        <span><i class="envelope icon"></i> {{ $contact["email"] }}</span> <br>
+                        <span><a href="mailto:{{ $contact["email"] }}"><i class="envelope icon"></i> {{ $contact["email"] }}</a></span> <br>
                         <span><a target="_blank" href="{{ $socials["github"] }}"><i class="github icon"></i> CommandString</a></span><br>
                         <span><a href="https://cmdstr.dev" class="href"><i class="globe icon"></i> cmdstr.dev</a></span>
                     </h1>
