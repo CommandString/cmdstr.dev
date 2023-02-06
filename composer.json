@@ -6,12 +6,15 @@
         "commandstring/cookie-encryption": "^3.0",
         "eftec/bladeone": "^4.8",
         "scssphp/scssphp": "^1.11",
-        "commandstring/discordoauth": "^1.0"
+        "commandstring/discordoauth": "^1.0",
+        "nesbot/carbon": "^2.66",
+        "commandstring/jsondb": "^1.1"
     },
     "autoload": {
         "psr-4": {
             "Routes\\": "./routes",
-            "Common\\": "./common"
+            "Common\\": "./common",
+            "Database\\": "./database"
         }
     }
 }
