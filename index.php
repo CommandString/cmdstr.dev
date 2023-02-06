@@ -3,9 +3,11 @@
 use CommandString\CookieEncryption\Encryption;
 use CommandString\Cookies\CookieController;
 use eftec\bladeone\BladeOne;
+use HttpSoft\Response\HtmlResponse;
 use React\Socket\SocketServer;
 use Router\Http\Router;
 use Common\Env;
+use Database\Db;
 
 require_once __DIR__ . "/vendor/autoload.php";
 
@@ -14,6 +16,7 @@ require_once __DIR__ . "/vendor/autoload.php";
 # |______ |  \_|   \/   __|__ |    \_ |_____| |  \_| |  |  | |______ |  \_|    |     #
 
 $env = Env::createFromJsonFile(__DIR__."/env.json");
+$env->db = new Db();
 
 #  ______  _____  _     _ _______ _______  ______  #
 # |_____/ |     | |     |    |    |______ |_____/  #
@@ -32,12 +35,16 @@ $env->cookie = new CookieController(new Encryption($env->cookies->encryption_pas
 # |_____] |_____ |     | |_____/ |______ |_____| |  \_| |______
 
 $env->blade = new BladeOne(realpath("./views"), realpath("./compiles"), BladeOne::MODE_SLOW); // change to MODE_FAST for production
-
+$env->blade->share("contact", [ "email" => "rsnedeker20@gmail.com", "discord" => "Command_String#6538" ]);
+$env->blade->share("socials", [ "github" => "https://github.com/commandstring" ]);
 #  ______  _____  _     _ _______ _______ _______ #
 # |_____/ |     | |     |    |    |______ |______ #
 # |    \_ |_____| |_____|    |    |______ ______| #
 $router
     ->get("/", [Routes\Home::class, "main"])
+    ->get("/resume", function () {
+        return new HtmlResponse(Env::blade()->run("resume"));
+    })
 
     // DO NOT ADD ROUTES BELOW THIS OR THEY WILL NOT WORK //
     ->get("/.*(".\Routes\Files\Files::generateRegex().")", [\Routes\Files\Files::class, "main"])

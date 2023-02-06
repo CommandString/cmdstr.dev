@@ -22,7 +22,7 @@
                 <span><i class="envelope icon"></i> {{ $contact["email"] }}</span>
             </div>
             <div class="column">
-                <span><i class="discord icon"></i> {{ $contact["discord"] }}</span>
+                <span>{{ $contact["discord"] }} <i class="discord icon"></i></span>
                 <img src="https://lanyard.cnrad.dev/api/232224992908017664" alt="Discord Status">
             </div>
         </div>

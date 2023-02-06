@@ -14,18 +14,13 @@ class Home {
             "Projects" => "/projects",
             "Discord Server" => "https://discord.gg/TgrcSkuDtQ",
             "Resume" => "/resume",
-            "Packagist" => "https://packagist.org/users/command_string/",
+            // "Packagist" => "https://packagist.org/users/command_string/",
             "Github" => "https://github.com/commandstring",
             "View Source" => "https://github.com/commandstring/cmdstr.dev",
-            "CmdMicro" => "https://github.com/commandstring/cmdmicro",
-            "DiscordPHP Bot Template" => "https://github.com/commandstring/discordphp-bot-template"
+            // "CmdMicro" => "https://github.com/commandstring/cmdmicro",
+            // "DiscordPHP Bot Template" => "https://github.com/commandstring/discordphp-bot-template"
         ];
 
-        $contact = [
-            "email" => "rsnedeker20@gmail.com",
-            "discord" => "Command_String#6538"
-        ];
-
-        return new HtmlResponse(Env::blade()->run("home", ["buttons" => $buttons, "contact" => $contact]));
+        return new HtmlResponse(Env::blade()->run("home", ["buttons" => $buttons]));
     }
 }
