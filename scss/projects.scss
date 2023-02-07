@@ -6,12 +6,21 @@ body > div {
     min-height: 100vh;
     background: linear-gradient(90deg, #8800FF60, black,black,black,black,black,black,black,black, #8800FF60) !important;
     
+    @media screen and (max-width: 630px) {
+        background: linear-gradient(90deg, #8800FF60, black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black, #8800FF60) !important;
+    }
+
     > .segment {
-        min-height: 100vh;
+        height: 100vh;
+        overflow: scroll;
 
         width: 80%;
         margin: auto !important;
         background-color: transparent !important;
+
+        @media screen and (max-width: 630px) {
+            width: 98%;
+        }
 
         .project {
             > .image-div {
@@ -34,12 +43,44 @@ body > div {
             + .project {
                 margin-top: 30px;
             }
-        }
 
-        .project::before {
-            content: "";
-            height: 2px;
-            background-color: white;
+            width: 70%;
+
+            @media screen and (max-width: 1000px) {
+                width: 90%;
+
+                > span {
+                    font-size: 25px;
+                    line-height: 25px;
+                }
+
+                > .header:nth-child(1) {
+                    font-size: 35px !important;
+                }
+            }
+            
+            @media screen and (max-width: 630px) {
+                > span {
+                    font-size: 20px;
+                    line-height: 18px;
+                }
+
+                .image-div {
+                    margin-left: 10px !important;
+
+                    > img {
+                        width: 100px;
+                    }
+                }
+
+                > .header:nth-child(1) > span {
+                    display: block;
+                }
+            }
+
+            @media screen and (max-width: 610px) {
+                width: 100%;
+            }
         }
 
         .left.project {
@@ -50,8 +91,6 @@ body > div {
                 margin-right: 30px;
                 float: left;
             }
-
-            width: 70%;
         }
 
         .right.project {
@@ -62,8 +101,6 @@ body > div {
                 margin-left: 30px;
                 float: right;
             }
-
-            width: 70%;
         }
     }
 }

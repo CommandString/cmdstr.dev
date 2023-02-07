@@ -46,6 +46,7 @@ a:hover {
   right: calc(var(--pos) - 20px);
   bottom: var(--pos);
   transition: 0.3s;
+  z-index: 2;
 }
 #back > a {
   opacity: 0.4;

@@ -12,13 +12,13 @@
     </div>
     <div class="ui inverted segment">
         <div class="ui stackable grid">
-            <div ignore="yes" class="row">
+            <div class="row">
                 <div class="sixteen wide column">
                     <h1 id="name" class="ui left floated inverted header">
                         <img src="/assets/img/me.png" class="ui bottom aligned image">
                         <span>R. Michael Snedeker</span>
                     </h1>
-                    <h1 class="ui inverted right floated header">
+                    <h1 id="contact" class="ui inverted right floated header">
                         <span><a href="mailto:{{ $contact["email"] }}"><i class="envelope icon"></i> {{ $contact["email"] }}</a></span> <br>
                         <span><a target="_blank" href="{{ $socials["github"] }}"><i class="github icon"></i> CommandString</a></span><br>
                         <span><a href="https://cmdstr.dev" class="href"><i class="globe icon"></i> cmdstr.dev</a></span>
@@ -75,8 +75,8 @@
                 <div class="four wide column">
                     <h1 class="ui massive inverted header">Relevant Skillsets</h1>
                 </div>
-                <div class="twelve wide column">
-                    <div class="ui equal width grid">
+                <div id="skillsets" class="twelve wide column">
+                    <div class="ui equal width stackable grid">
                         <div class="column">
                             <div class="ui centered massive header inverted">Coding</div>
                             <ul>
@@ -107,7 +107,7 @@
             <div class="ui divider"></div>
             <div class="row">
                 <div class="four wide column">
-                    <h1 class="ui massive inverted header">Achievements & Extracurriculars</h1>
+                    <h1 class="ui massive inverted header">Achievements</h1>
                 </div>
                 <div class="twelve wide column">
                     <span class="ui big text"><b>Future Business Leaders of America</b> <span class="ui small text">(FBLA)</span></span><br>

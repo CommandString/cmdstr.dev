@@ -24,13 +24,42 @@ body > div {
   margin: -10px 0;
   color: white;
 }
-#nametag > div p:nth-child(1) {
+#nametag > div > p:nth-child(1) {
   font-weight: bold;
   font-size: 40px;
 }
 #nametag > div > p:nth-child(2) {
   font-size: 25px;
   opacity: 0.5;
+}
+@media screen and (max-width: 630px) {
+  #nametag > img {
+    width: 190px;
+  }
+  #nametag > div {
+    margin-left: 20px;
+  }
+  #nametag > div > p:nth-child(1) {
+    font-size: 35px;
+  }
+  #nametag > div > p:nth-child(2) {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 510px) {
+  #nametag > img {
+    width: 130px;
+  }
+  #nametag > div {
+    margin-left: 20px;
+  }
+  #nametag > div > p:nth-child(1) {
+    font-size: 28px;
+  }
+  #nametag > div > p:nth-child(2) {
+    margin-top: 3px;
+    font-size: 18px;
+  }
 }
 #buttons .column {
   background: linear-gradient(transparent 50%, #8800FF);
@@ -45,8 +74,15 @@ body > div {
 #buttons .column > div {
   font-size: 1.5em !important;
 }
-#buttons div.row + div.row {
-  margin-top: -30px;
+@media screen and (max-width: 510px) {
+  #buttons .column > div {
+    font-size: 1.2em !important;
+  }
+}
+@media screen and (min-width: 768px) {
+  #buttons div.row + div.row {
+    margin-top: -30px;
+  }
 }
 #buttons .column:hover {
   background-position-y: 100%;
@@ -59,9 +95,42 @@ body > div {
   opacity: 0.5;
   font-size: 30px;
 }
+@media screen and (max-width: 630px) {
+  #iam > span {
+    font-size: 25px;
+  }
+}
 #contact {
   padding-left: 100px;
   padding-right: 100px;
+  margin-bottom: 80px;
+}
+@media screen and (max-width: 1130px) {
+  #contact {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 25px !important;
+  }
+  #contact > div:nth-child(1) {
+    display: none;
+  }
+  #contact > div:nth-child(2) {
+    display: none;
+  }
+  #contact > div:nth-child(3) {
+    display: block !important;
+  }
+}
+@media screen and (max-width: 630px) {
+  #contact > div:nth-child(3) > span {
+    font-size: 27px;
+    line-height: 40px;
+  }
+}
+@media screen and (max-width: 510px) {
+  #contact > div:nth-child(3) > span {
+    font-size: 23px;
+  }
 }
 #contact > div {
   height: 100px;
@@ -72,26 +141,30 @@ body > div {
   color: white;
   font-size: 35px;
 }
+#contact > div:nth-child(1) {
+  float: left;
+}
+#contact > div:nth-child(2) {
+  float: right;
+}
+#contact > div:nth-child(3) {
+  display: none;
+  text-align: center;
+  margin-top: 10px;
+}
 #contact > div:nth-child(2) {
   text-align: right;
 }
 #contact > div:nth-child(2) > span {
   z-index: 1;
 }
-#contact > div:nth-child(2) span:hover + img {
-  opacity: 1;
-}
 #contact > div:nth-child(2) > img {
-  position: absolute;
+  display: block;
   transition: 0.5s;
-  right: 0;
-  bottom: 100px;
+  margin-top: -210px;
 }
-@media (max-width: 1650px) {
+@media (max-width: 1650px) or (max-height: 625px) {
   #contact > div:nth-child(2) > img {
     opacity: 0;
-  }
-  #contact > div:nth-child(2) span {
-    text-decoration: underline;
   }
 }

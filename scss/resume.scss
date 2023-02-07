@@ -6,6 +6,11 @@ body > div {
     min-height: 100vh;
     background: linear-gradient(90deg, #8800FF60, black,black,black,black,black,black,black,black, #8800FF60) !important;
     
+    
+    @media screen and (max-width: 540px) {
+        background: linear-gradient(90deg, #8800FF60, black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black,black, #8800FF60) !important;
+    }
+
     > .segment {
         min-height: 100vh;
 
@@ -13,13 +18,19 @@ body > div {
         margin: auto !important;
         background-color: transparent !important;
         
-        .massive.header {
+        div.massive.header {
             font-size: 35px !important;
         }
 
-        #name {
-            transition: 1s !important;
+        h1.massive.header {
+            font-size: 38px !important;
+        }
 
+        @media screen and (max-width: 540px) {
+            width: 98%;
+        }
+
+        #name {
             > .image {
                 width: 100px;
                 border-radius: 10px;
@@ -28,7 +39,135 @@ body > div {
             
             > span {
                 font-size: 50px !important;
-                transition: inherit !important;
+            }
+        }
+
+        @media screen and (max-width: 1224px) {
+            #name {
+                > .image {
+                    width: 80px !important;
+                }
+
+                > span {
+                    font-size: 40px !important;
+                }
+            }
+
+            #contact {
+                font-size: 25px !important;
+            }
+
+            div.massive.header {
+                font-size: 27px !important;
+            }
+
+            h1.massive.header {
+                font-size: 30px !important;
+            }
+
+            span.ui.large.text {
+                font-size: 19px !important;
+            }
+
+            span.ui.big.text {
+                font-size: 25px;
+            }
+        }
+
+        @media screen and (max-width: 1036px) {
+            #name {
+                > .image {
+                    width: 70px !important;
+                }
+
+                > span {
+                    font-size: 30px !important;
+                }
+            }
+
+            #contact {
+                font-size: 23px !important;
+            }
+
+            div.massive.header {
+                font-size: 30px !important;
+            }
+
+            h1.massive.header {
+                font-size: 33px !important;
+            }
+
+            span.ui.large.text {
+                font-size: 16px !important;
+            }
+
+            span.ui.big.text {
+                font-size: 23px;
+            }
+        }
+
+        @media screen and (max-width: 940px) {
+            .ui.stackable.grid > .row > .column,
+            .ui.stackable.grid > .row > .wide.column {
+                width: 100% !important;
+                margin: 0 0 !important;
+                -webkit-box-shadow: none !important;
+                box-shadow: none !important;
+                padding: 1rem 1rem;
+            }
+
+            #contact, #name {
+                float: unset !important;
+                text-align: center;
+            }
+
+            #name {
+                > .image {
+                    width: 80px !important;
+                }
+
+                > span {
+                    font-size: 40px !important;
+                }
+            }
+
+            #contact {
+                font-size: 25px !important;
+            }
+
+            div.massive.header {
+                font-size: 30px !important;
+            }
+
+            h1.massive.header {
+                font-size: 33px !important;
+                margin-bottom: -20px;
+                text-align: center;
+            }
+
+            span.ui.large.text {
+                font-size: 19px !important;
+            }
+
+            span.ui.big.text {
+                font-size: 25px;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            #skillsets .header {
+                text-align: left !important;
+            }
+        }
+
+        @media screen and (max-width: 649px) {
+            #name {
+                > .image {
+                    display: block;
+                    margin: auto;
+                    margin-bottom: 10px;
+                    width: 110px !important;
+                }
             }
         }
         

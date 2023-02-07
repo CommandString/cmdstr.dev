@@ -5,17 +5,27 @@ body > div {
   min-height: 100vh;
   background: linear-gradient(90deg, #8800FF60, black, black, black, black, black, black, black, black, #8800FF60) !important;
 }
+@media screen and (max-width: 540px) {
+  body > div {
+    background: linear-gradient(90deg, #8800FF60, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, black, #8800FF60) !important;
+  }
+}
 body > div > .segment {
   min-height: 100vh;
   width: 80%;
   margin: auto !important;
   background-color: transparent !important;
 }
-body > div > .segment .massive.header {
+body > div > .segment div.massive.header {
   font-size: 35px !important;
 }
-body > div > .segment #name {
-  transition: 1s !important;
+body > div > .segment h1.massive.header {
+  font-size: 38px !important;
+}
+@media screen and (max-width: 540px) {
+  body > div > .segment {
+    width: 98%;
+  }
 }
 body > div > .segment #name > .image {
   width: 100px;
@@ -24,7 +34,101 @@ body > div > .segment #name > .image {
 }
 body > div > .segment #name > span {
   font-size: 50px !important;
-  transition: inherit !important;
+}
+@media screen and (max-width: 1224px) {
+  body > div > .segment #name > .image {
+    width: 80px !important;
+  }
+  body > div > .segment #name > span {
+    font-size: 40px !important;
+  }
+  body > div > .segment #contact {
+    font-size: 25px !important;
+  }
+  body > div > .segment div.massive.header {
+    font-size: 27px !important;
+  }
+  body > div > .segment h1.massive.header {
+    font-size: 30px !important;
+  }
+  body > div > .segment span.ui.large.text {
+    font-size: 19px !important;
+  }
+  body > div > .segment span.ui.big.text {
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 1036px) {
+  body > div > .segment #name > .image {
+    width: 70px !important;
+  }
+  body > div > .segment #name > span {
+    font-size: 30px !important;
+  }
+  body > div > .segment #contact {
+    font-size: 23px !important;
+  }
+  body > div > .segment div.massive.header {
+    font-size: 30px !important;
+  }
+  body > div > .segment h1.massive.header {
+    font-size: 33px !important;
+  }
+  body > div > .segment span.ui.large.text {
+    font-size: 16px !important;
+  }
+  body > div > .segment span.ui.big.text {
+    font-size: 23px;
+  }
+}
+@media screen and (max-width: 940px) {
+  body > div > .segment .ui.stackable.grid > .row > .column, body > div > .segment .ui.stackable.grid > .row > .wide.column {
+    width: 100% !important;
+    margin: 0 0 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    padding: 1rem 1rem;
+  }
+  body > div > .segment #contact, body > div > .segment #name {
+    float: unset !important;
+    text-align: center;
+  }
+  body > div > .segment #name > .image {
+    width: 80px !important;
+  }
+  body > div > .segment #name > span {
+    font-size: 40px !important;
+  }
+  body > div > .segment #contact {
+    font-size: 25px !important;
+  }
+  body > div > .segment div.massive.header {
+    font-size: 30px !important;
+  }
+  body > div > .segment h1.massive.header {
+    font-size: 33px !important;
+    margin-bottom: -20px;
+    text-align: center;
+  }
+  body > div > .segment span.ui.large.text {
+    font-size: 19px !important;
+  }
+  body > div > .segment span.ui.big.text {
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 767px) {
+  body > div > .segment #skillsets .header {
+    text-align: left !important;
+  }
+}
+@media screen and (max-width: 649px) {
+  body > div > .segment #name > .image {
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 110px !important;
+  }
 }
 body > div > .segment li {
   font-size: 1.5em;

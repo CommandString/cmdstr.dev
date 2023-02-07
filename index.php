@@ -3,8 +3,6 @@
 use Carbon\Carbon;
 use CommandString\CookieEncryption\Encryption;
 use CommandString\Cookies\CookieController;
-use CommandString\DiscordOAuth\Enums\Scopes;
-use CommandString\DiscordOAuth\OAuth;
 use CommandString\JsonDb\Exceptions\InvalidValue;
 use CommandString\JsonDb\Exceptions\UniqueRowViolation;
 use eftec\bladeone\BladeOne;

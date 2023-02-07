@@ -17,16 +17,21 @@
         <div id="iam">
             <span>I am</span>
         </div>
-        <div id="contact" class="ui equal width grid">
-            <div class="column">
+        <div id="contact">
+            <div>
                 <span><i class="envelope icon"></i> {{ $contact["email"] }}</span>
             </div>
-            <div class="column">
-                <span>{{ $contact["discord"] }} <i class="discord icon"></i></span>
+            <div>
                 <img src="https://lanyard.cnrad.dev/api/232224992908017664" alt="Discord Status">
+                <span>{{ $contact["discord"] }} <i class="discord icon"></i></span>
+            </div>
+            <div>
+                <span><i class="envelope icon"></i> {{ $contact["email"] }}</span>
+                <br>
+                <span> <i class="discord icon"></i> {{ $contact["discord"] }}</span>
             </div>
         </div>
-        <div id="buttons" class="ui equal width grid">
+        <div id="buttons" class="ui equal width stackable grid">
             <div class="row">
                 @php
                     $buttonCount = 0;
