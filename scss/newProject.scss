@@ -1,0 +1,32 @@
+body {
+    background-color: black;
+}
+
+body > div {
+    min-height: 100vh;
+    background: linear-gradient(90deg, #8800FF60, black,black,black,black,black,black,black,black, #8800FF60) !important;
+
+    padding-top: 50px;
+
+    > form {
+        width: 80%;
+        margin: auto;
+
+        .calendar {
+            margin-top: 5px !important;
+
+            i {
+                margin: 0 !important;
+            }
+        }
+    }
+
+    span {
+        color: white;
+    }
+
+    form span + input,
+    form span + textarea {
+        margin-top: 5px !important;
+    }
+}
