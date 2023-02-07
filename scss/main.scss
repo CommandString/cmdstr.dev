@@ -31,7 +31,7 @@
 ::selection {
     background: #8800FF;
     color: black;
-    text-shadow: white 2px 2px;
+    text-shadow: white 2px 2px 1px;
 }
 
 a {
@@ -49,14 +49,14 @@ a:hover {
     font-size: 25px;
     right: calc(var(--pos) - 20px);
     bottom: var(--pos);
-    opacity: 0.4;
     transition: 0.3s;
+
+    > a {
+        opacity: 0.4;
+    }
 }
 
-#back:hover {
-    > a {
-        color: #8800FF !important;
-    }
-    
+#back > a:hover {
+    color: #8800FF !important;
     opacity: 1;
 }
