@@ -11,7 +11,7 @@
         <a href="/"><i class="arrow big alternate circle left icon"></i></a>
     </div>
     <div class="ui inverted segment">
-        <div class="ui grid">
+        <div class="ui stackable grid">
             <div ignore="yes" class="row">
                 <div class="sixteen wide column">
                     <h1 id="name" class="ui left floated inverted header">
