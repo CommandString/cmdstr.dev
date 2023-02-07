@@ -1,6 +1,6 @@
 {
     "require": {
-        "commandstring/router": "^2.1",
+        "commandstring/router": "3.4.3",
         "commandstring/env": "^1.0",
         "commandstring/reactphp-cookies": "^1.0",
         "commandstring/cookie-encryption": "^3.0",

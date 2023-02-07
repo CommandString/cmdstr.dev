@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "652094ed4fd89c93c3fb148b0b3a5d94",
+    "content-hash": "b1f3107c8368710ae7fdd07aade86c2e",
     "packages": [
         {
             "name": "commandstring/cookie-encryption",
@@ -237,16 +237,16 @@
         },
         {
             "name": "commandstring/router",
-            "version": "V2.1.3",
+            "version": "v3.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CommandString/Router.git",
-                "reference": "0dcecda0106886db80f12fe201290326957cd501"
+                "reference": "02a94aa5ac11ec3d785cbf450c738006cbbf88a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CommandString/Router/zipball/0dcecda0106886db80f12fe201290326957cd501",
-                "reference": "0dcecda0106886db80f12fe201290326957cd501",
+                "url": "https://api.github.com/repos/CommandString/Router/zipball/02a94aa5ac11ec3d785cbf450c738006cbbf88a9",
+                "reference": "02a94aa5ac11ec3d785cbf450c738006cbbf88a9",
                 "shasum": ""
             },
             "require": {
@@ -266,9 +266,9 @@
             ],
             "support": {
                 "issues": "https://github.com/CommandString/Router/issues",
-                "source": "https://github.com/CommandString/Router/tree/V2.1.3"
+                "source": "https://github.com/CommandString/Router/tree/v3.4.3"
             },
-            "time": "2023-01-07T05:36:00+00:00"
+            "time": "2023-02-02T13:45:04+00:00"
         },
         {
             "name": "commandstring/utils",
