@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1f3107c8368710ae7fdd07aade86c2e",
+    "content-hash": "f1fba40ea9b4f27872c59137738d2728",
     "packages": [
         {
             "name": "commandstring/cookie-encryption",
@@ -40,47 +40,6 @@
                 "source": "https://github.com/CommandString/Cookie-Encryption/tree/v3.0.1"
             },
             "time": "2023-01-20T07:31:43+00:00"
-        },
-        {
-            "name": "commandstring/discordoauth",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CommandString/discordoauth.git",
-                "reference": "1e8c20511b79201c86ba1eeb01550731f3f97ab2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/CommandString/discordoauth/zipball/1e8c20511b79201c86ba1eeb01550731f3f97ab2",
-                "reference": "1e8c20511b79201c86ba1eeb01550731f3f97ab2",
-                "shasum": ""
-            },
-            "require": {
-                "react/async": "^4.0",
-                "react/http": "^1.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "CommandString\\DiscordOAuth\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "commandstring",
-                    "email": "bmxmikey2@gmail.com"
-                }
-            ],
-            "description": "An easier way to use discord oauth in PHP",
-            "support": {
-                "issues": "https://github.com/CommandString/discordoauth/issues",
-                "source": "https://github.com/CommandString/discordoauth/tree/v1.0.1"
-            },
-            "time": "2023-01-07T07:04:51+00:00"
         },
         {
             "name": "commandstring/encrypt",
@@ -193,47 +152,6 @@
                 "source": "https://github.com/CommandString/jsondb/tree/v1.1.1"
             },
             "time": "2023-02-05T17:28:25+00:00"
-        },
-        {
-            "name": "commandstring/reactphp-cookies",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CommandString/ReactPHP-Cookies.git",
-                "reference": "cf33b8ae42edf586a02b9470cadb83585fb476ff"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/CommandString/ReactPHP-Cookies/zipball/cf33b8ae42edf586a02b9470cadb83585fb476ff",
-                "reference": "cf33b8ae42edf586a02b9470cadb83585fb476ff",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "react/http": "^1.8"
-            },
-            "conflict": {
-                "commandstring/cookies": "*"
-            },
-            "suggest": {
-                "commandstring/cookie-encryption": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "CommandString\\Cookies\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A simpler way to manipulate cookies in React/Http",
-            "support": {
-                "issues": "https://github.com/CommandString/ReactPHP-Cookies/issues",
-                "source": "https://github.com/CommandString/ReactPHP-Cookies/tree/v1.0.1"
-            },
-            "time": "2023-01-20T21:44:53+00:00"
         },
         {
             "name": "commandstring/router",
@@ -795,84 +713,6 @@
                 "source": "https://github.com/php-fig/http-message/tree/master"
             },
             "time": "2016-08-06T14:39:51+00:00"
-        },
-        {
-            "name": "react/async",
-            "version": "v4.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/async.git",
-                "reference": "2aa8d89057e1059f59666e4204100636249b7be0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/async/zipball/2aa8d89057e1059f59666e4204100636249b7be0",
-                "reference": "2aa8d89057e1059f59666e4204100636249b7be0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "react/event-loop": "^1.2",
-                "react/promise": "^3.0 || ^2.8 || ^1.2.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.3"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/functions_include.php"
-                ],
-                "psr-4": {
-                    "React\\Async\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christian Lück",
-                    "email": "christian@clue.engineering",
-                    "homepage": "https://clue.engineering/"
-                },
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "reactphp@ceesjankiewiet.nl",
-                    "homepage": "https://wyrihaximus.net/"
-                },
-                {
-                    "name": "Jan Sorgalla",
-                    "email": "jsorgalla@gmail.com",
-                    "homepage": "https://sorgalla.com/"
-                },
-                {
-                    "name": "Chris Boden",
-                    "email": "cboden@gmail.com",
-                    "homepage": "https://cboden.dev/"
-                }
-            ],
-            "description": "Async utilities and fibers for ReactPHP",
-            "keywords": [
-                "async",
-                "reactphp"
-            ],
-            "support": {
-                "issues": "https://github.com/reactphp/async/issues",
-                "source": "https://github.com/reactphp/async/tree/v4.0.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/WyriHaximus",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/clue",
-                    "type": "github"
-                }
-            ],
-            "time": "2022-07-11T14:21:02+00:00"
         },
         {
             "name": "react/cache",

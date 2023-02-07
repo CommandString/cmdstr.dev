@@ -1,8 +1,6 @@
 <?php
 
 use Carbon\Carbon;
-use CommandString\CookieEncryption\Encryption;
-use CommandString\Cookies\CookieController;
 use CommandString\JsonDb\Exceptions\InvalidValue;
 use CommandString\JsonDb\Exceptions\UniqueRowViolation;
 use eftec\bladeone\BladeOne;
@@ -33,12 +31,6 @@ $env->db = new Db(JSON_PRETTY_PRINT);
 # |    \_ |_____| |_____|    |    |______ |    \_  #
 
 $router = new Router(new SocketServer("{$env->server->ip}:{$env->server->port}"), $env->server->dev);
-
-#  _______  _____   _____  _     _ _____ _______ _______ #
-# |       |     | |     | |____/    |   |______ |______ #
-# |_____  |_____| |_____| |    \_ __|__ |______ ______| #
-
-$env->cookie = new CookieController(new Encryption($env->cookies->encryption_passphrase, $env->cookies->encryption_algo));
 
 # ______         _______ ______  _______  _____  __   _ _______
 # |_____] |      |_____| |     \ |______ |     | | \  | |______

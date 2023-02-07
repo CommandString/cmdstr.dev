@@ -2,11 +2,9 @@
     "require": {
         "commandstring/router": "3.4.3",
         "commandstring/env": "^1.0",
-        "commandstring/reactphp-cookies": "^1.0",
         "commandstring/cookie-encryption": "^3.0",
         "eftec/bladeone": "^4.8",
         "scssphp/scssphp": "^1.11",
-        "commandstring/discordoauth": "^1.0",
         "nesbot/carbon": "^2.66",
         "commandstring/jsondb": "^1.1"
     },
