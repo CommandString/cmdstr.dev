@@ -1,0 +1,18 @@
+[
+    {
+        "name": "CmdMicro",
+        "description": "A micro framework in PHP that wraps all of my composer packages into one base that easy to build off of.",
+        "start": 1663459200,
+        "thumbnail": "\/assets\/img\/logo.png",
+        "link": "https:\/\/github.com\/commandstring\/cmdmicro",
+        "end": 0
+    },
+    {
+        "name": "Yang",
+        "start": 1673913600,
+        "description": "A RWBY themed discord written in PHP. It's built off my DiscordPHP Bot Template with the website hooked directly to the bot as well which uses cmdmicro (my microframework)",
+        "thumbnail": "\/assets\/img\/thumbs\/yang.png",
+        "end": 0,
+        "link": "https:\/\/yang.cmdstr.dev"
+    }
+]
