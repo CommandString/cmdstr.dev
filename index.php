@@ -133,8 +133,6 @@ $router
         $dateFormat = "F j, Y";
         $row["start"] = (new Carbon($row["start"]))->format($dateFormat);
 
-        echo $row["start"];
-
         if ($row["end"]) {
             $row["end"] = (new Carbon($row["end"]))->format($dateFormat);
         }
