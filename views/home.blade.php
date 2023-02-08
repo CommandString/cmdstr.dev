@@ -50,7 +50,7 @@
                     @endif
                     <a href="{{ $href }}" @if (!str_starts_with($href, "/")) target="_blank" @endif class="column">
                         <div class="ui inverted horizontal divider">
-                            {{ $name }}
+                            {{ $name }} @if (!str_starts_with($href, "/")) <i class="ui icon external alternate"></i> @endif
                         </div>
                     </a>
                 @endforeach
