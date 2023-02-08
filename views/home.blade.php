@@ -19,9 +19,9 @@
                 <p>Michael Snedeker</p>
             </div>
         </div>
-        <div id="iam">
+        {{-- <div id="iam">
             <span>I am</span>
-        </div>
+        </div> --}}
         <div id="contact">
             <div>
                 <span><i class="envelope icon"></i> {{ $contact["email"] }}</span>
