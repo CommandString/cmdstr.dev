@@ -3,6 +3,11 @@
 @section('head')
     <title>Command_String</title>
     <link rel="stylesheet" href="/assets/css/home.css">
+
+    <meta property="og:title" content="Command_String" />
+    <meta property="og:url" content="https://cmdstr.dev" />
+    <meta property="og:image" content="https://cmdstr.dev/assets/img/logo.png" />
+    <meta property="og:description" content="I'm Michael, or as most people call me, Command_String.">
 @endsection
 
 @section('body')
