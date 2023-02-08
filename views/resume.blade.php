@@ -91,7 +91,7 @@
                             </ul>
                         </div>
                         <div class="column">
-                            <div class="ui centered massive header inverted">Frameworks</div>
+                            <div class="ui centered massive header inverted">Frameworks/Libraries</div>
                             <ul>
                                 <li>DiscordPHP</li>
                                 <li>jQuery</li>
