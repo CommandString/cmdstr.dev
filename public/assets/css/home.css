@@ -2,9 +2,21 @@ body {
   background-color: black;
 }
 body > div {
-  background: linear-gradient(90deg, #000000, #8800FF60, #000000) !important;
+  min-height: 100vh;
+  background: linear-gradient(270deg, #000000, #8800FF60, #000000);
+  background-size: 100% 100%;
+  background-position: 50% 50%;
+  animation: bgAnim 7s ease-in-out 200ms infinite alternate forwards;
   min-height: 100vh;
   padding: 0 30px;
+}
+@keyframes bgAnim {
+  from {
+    background-size: 100% 100%;
+  }
+  to {
+    background-size: 200% 100%;
+  }
 }
 #nametag {
   display: flex;
