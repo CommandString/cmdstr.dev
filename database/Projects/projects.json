@@ -19,8 +19,8 @@
         "name": "DiscordPHP Bot Template",
         "start": 1665619200,
         "description": "A DiscordPHP bot boilerplate used to quickly get a PHP bot started so all you have to worry about is implementing features.",
-        "link": "https:\/\/github.com\/commandString\/discordPHP-Bot-Template",
+        "link": "https:\/\/github.com\/CommandString\/DiscordPHP-Bot-Template",
         "end": 0,
-        "thumbnail": null
+        "thumbnail": "\/assets\/img\/thumbs\/dphp.png"
     }
 ]
