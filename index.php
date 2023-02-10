@@ -64,6 +64,10 @@ $router
         $rows = $projects->newQuery()->execute();
         $dateFormat = "n/j/Y";
 
+        usort($rows, function ($a, $b) {
+            return ($a->start < $b->start);
+        });
+
         foreach (array_keys($rows) as $key) {
             $row = & $rows[$key];
             $row = $row->jsonSerialize();
