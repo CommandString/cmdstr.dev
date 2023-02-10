@@ -1,20 +1,15 @@
 <?php
 
-use Carbon\Carbon;
-use CommandString\JsonDb\Exceptions\InvalidValue;
-use CommandString\JsonDb\Exceptions\UniqueRowViolation;
 use eftec\bladeone\BladeOne;
 use HttpSoft\Response\HtmlResponse;
-use HttpSoft\Response\RedirectResponse;
 use React\Socket\SocketServer;
 use Router\Http\Router;
 use Common\Env;
 use Database\Db;
-use Database\Projects\Projects;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use React\Http\Message\Response;
 use Routes\ErrorHandler;
+use Routes\Projects;
 
 require_once __DIR__ . "/vendor/autoload.php";
 
@@ -59,131 +54,11 @@ $router
     ->get("/resume", function () {
         return new HtmlResponse(Env::blade()->run("resume"));
     })
-    ->get("/projects", function (ServerRequestInterface $req, ResponseInterface $res, BladeOne $blade) use ($env) {
-        $projects = $env->db->projects;
-        $rows = $projects->newQuery()->execute();
-        $dateFormat = "n/j/Y";
-
-        usort($rows, function ($a, $b) {
-            return ($a->start < $b->start);
-        });
-
-        foreach (array_keys($rows) as $key) {
-            $row = & $rows[$key];
-            $row = $row->jsonSerialize();
-
-            $row["start"] = (new Carbon($row["start"]))->format($dateFormat);
-
-            if ($row["end"]) {
-                $row["end"] = (new Carbon($row["end"]))->format($dateFormat);
-            }
-        }
-
-        return new HtmlResponse($blade->run("projects", ["projects" => $rows]));
-    })
-    ->get("/dev/projects/new", function (ServerRequestInterface $req, ResponseInterface $res, BladeOne $blade) {
-        return new HtmlResponse($blade->run("newProject"));
-    })
-    ->post("/dev/projects/new", function (ServerRequestInterface $req, ResponseInterface $res, BladeOne $blade) use ($env) {
-        $post = $req->getParsedBody();
-
-        $required = ["name", "start", "description"];
-        $optional = ["end", "link", "thumbnail"];
-
-        try {
-            $row = $env->db->projects->newRow();
-
-            foreach ($required as $key) {
-                $value = $post[$key] ?? "";
-
-                if (empty($value)) {
-                    throw new InvalidArgumentException;
-                }
-
-                $row->setColumn($key, ($key === Projects::START) ? (new Carbon($value))->getTimestamp() : $value);
-            }
-
-            foreach ($optional as $key) {
-                $value = $post[$key] ?? "";
-
-                if (!empty($value)) {
-                    $row->setColumn($key, ($key === Projects::END) ? (new Carbon($value))->getTimestamp() : $value);
-                }
-            }
-
-            $row->store();
-        } catch (InvalidArgumentException|InvalidValue|UniqueRowViolation $e) {
-            $dateFormat = "F n, Y";
-            $post->start = (new Carbon($post->start))->format($dateFormat);
-
-            if ($post->end) {
-                $post->end = (new Carbon($post->start))->format($dateFormat);
-            }
-
-            return new HtmlResponse($blade->run("newProject", ["post" => $post]));
-        }
-
-        return new RedirectResponse("/projects");
-    })
-    ->get("/dev/projects/edit/{id}", function (ServerRequestInterface $req, ResponseInterface $res, $id, BladeOne $blade) use ($env) {
-        $row = $env->db->projects->getRows()[$id] ?? null;
-
-        if (is_null($row)) {
-            return new RedirectResponse("/projects");
-        }
-
-        $row = $row->jsonSerialize();
-        
-        $dateFormat = "F j, Y";
-        $row["start"] = (new Carbon($row["start"]))->format($dateFormat);
-
-        if ($row["end"]) {
-            $row["end"] = (new Carbon($row["end"]))->format($dateFormat);
-        }
-        
-        return new HtmlResponse($blade->run("newProject", ["post" => $row, "edit" => true]));
-    })
-    ->post("/dev/projects/edit/{id}", function (ServerRequestInterface $req, ResponseInterface $res, $id, BladeOne $blade) use ($env) {
-        $post = $req->getParsedBody();
-
-        $required = ["name", "start", "description"];
-        $optional = ["end", "link", "thumbnail"];
-
-        try {
-            $row = $env->db->projects->getRows()[$id];
-
-            foreach ($required as $key) {
-                $value = $post[$key] ?? "";
-
-                if (empty($value)) {
-                    throw new InvalidArgumentException;
-                }
-
-                $row->setColumn($key, ($key === Projects::START) ? (new Carbon($value))->getTimestamp() : $value);
-            }
-
-            foreach ($optional as $key) {
-                $value = $post[$key] ?? "";
-
-                if (!empty($value)) {
-                    $row->setColumn($key, ($key === Projects::END) ? (new Carbon($value))->getTimestamp() : $value);
-                }
-            }
-
-            $row->store();
-        } catch (InvalidArgumentException|InvalidValue $e) {
-            $dateFormat = "F j, Y";
-            $post->start = (new Carbon($post->start))->format($dateFormat);
-
-            if ($post->end) {
-                $post->end = (new Carbon($post->end))->format($dateFormat);
-            }
-
-            return new HtmlResponse($blade->run("newProject", ["post" => $post, "edit" => true]));
-        }
-
-        return new RedirectResponse("/projects");
-    })
+    ->get("/projects", [Projects::class, "main"])
+    ->get("/dev/projects/new", [Projects::class, "getNew"])
+    ->post("/dev/projects/new", [Projects::class, "postNew"])
+    ->get("/dev/projects/edit/{id}", [Projects::class, "getEdit"])
+    ->post("/dev/projects/edit/{id}", [Projects::class, "postEdit"])
 
     // DO NOT ADD ROUTES BELOW THIS OR THEY WILL NOT WORK //
     ->get("/.*(".\Routes\Files\Files::generateRegex().")", [\Routes\Files\Files::class, "main"])
