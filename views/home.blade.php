@@ -8,6 +8,8 @@
     <meta property="og:url" content="https://cmdstr.dev" />
     <meta property="og:image" content="https://cmdstr.dev/assets/img/logo.png" />
     <meta property="og:description" content="I'm Michael, or as most people call me, Command_String.">
+
+    <script src="/assets/js/iam.js"></script>
 @endsection
 
 @section('body')
@@ -19,9 +21,9 @@
                 <p>Michael Snedeker</p>
             </div>
         </div>
-        {{-- <div id="iam">
-            <span>I am</span>
-        </div> --}}
+        <div id="iam">
+            <span>I am</span> <b></b>
+        </div>
         <div id="contact">
             <div>
                 <span><i class="envelope icon"></i> {{ $contact["email"] }}</span>
