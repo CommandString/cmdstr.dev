@@ -40,7 +40,7 @@ $env->blade->share("socials", [ "github" => "https://github.com/commandstring" ]
 $router
     ->beforeMiddleware("/(.*)", function (ServerRequestInterface $req, Closure $next) use ($env) {
         $res = new Response();
-        $isDev = in_array($req->getServerParams()["REMOTE_ADDR"] ?? "", (array) $env->server->dev_ips);
+        $isDev = $env->server->dev;
 
         $blade = Env::blade()->share("isDev", $isDev);
 
