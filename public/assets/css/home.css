@@ -101,15 +101,20 @@ body > div {
 }
 #iam {
   text-align: center;
-}
-#iam > span {
   color: white;
-  opacity: 0.5;
   font-size: 30px;
 }
+#iam > span {
+  opacity: 0.5;
+}
 @media screen and (max-width: 630px) {
-  #iam > span {
+  #iam {
     font-size: 25px;
+  }
+}
+@media screen and (max-width: 510px) {
+  #iam {
+    font-size: 20px;
   }
 }
 #contact {

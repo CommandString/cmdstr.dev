@@ -125,17 +125,19 @@ body {
 
 #iam {
     text-align: center;
+    color: white;
+    font-size: 30px;
 
     > span {
-        color: white;
         opacity: 0.5;
-        font-size: 30px;
     }
 
     @media screen and (max-width: 630px) {
-        > span {
-            font-size: 25px;
-        }
+        font-size: 25px;
+    }
+
+    @media screen and (max-width: 510px) {
+        font-size: 20px;
     }
 }
 
