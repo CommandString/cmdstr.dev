@@ -22,5 +22,13 @@
         "link": "https:\/\/github.com\/CommandString\/DiscordPHP-Bot-Template",
         "end": 0,
         "thumbnail": "\/assets\/img\/thumbs\/dphp.png"
+    },
+    {
+        "name": "PHP-Bot",
+        "start": 1675728000,
+        "description": "A discord bot that used for helping PHP developers debug problems, search docs, and even run code! ",
+        "link": "https:\/\/github.com\/commandstring\/php-bot",
+        "thumbnail": "https:\/\/cdn.discordapp.com\/avatars\/1072721194622668801\/66f5229da07952c8a885e45d6e14c602.webp",
+        "end": 0
     }
 ]
