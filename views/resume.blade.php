@@ -31,7 +31,7 @@
                     <h1 class="ui massive inverted header">Career Objective</h1>
                 </div>
                 <div class="twelve wide column">
-                    <span class="ui large text">Competent self driven PHP developer with a vast background in computer repair who is looking for a workspace to grow and utilize the skills they've already acquired. Additionally, they have taught themselves many languages and frameworks over the course of two years plus are designing their own <a target="_blank" href="https://github.com/commandstring/cmdmicro">micro framework</a>.</span>
+                    <span class="ui large text">Competent self-driven PHP developer who is looking to connect with a professional organization to grow within the web design and development field. Additional skillsets include the ability to effectively communicate, work within teams to meet common deadlines and goals, as well as an understanding of computer design and repair.</span>
                 </div>
             </div>
             <div class="ui divider"></div>
@@ -78,7 +78,7 @@
                 <div id="skillsets" class="twelve wide column">
                     <div class="ui equal width stackable grid">
                         <div class="column">
-                            <div class="ui centered massive header inverted">Coding</div>
+                            <div class="ui massive header inverted">Coding</div>
                             <ul>
                                 <li>PHP</li>
                                 <li>JavaScript</li>
@@ -91,7 +91,7 @@
                             </ul>
                         </div>
                         <div class="column">
-                            <div class="ui centered massive header inverted">Frameworks/Libraries</div>
+                            <div class="ui massive header inverted">Frameworks/Libraries</div>
                             <ul>
                                 <li>DiscordPHP</li>
                                 <li>jQuery</li>
