@@ -1,15 +1,16 @@
 <?php
 
+use CommandString\CookieEncryption\Encryption;
+use CommandString\Cookies\CookieController;
+use CommandString\Pdo\Driver;
 use eftec\bladeone\BladeOne;
 use HttpSoft\Response\HtmlResponse;
 use React\Socket\SocketServer;
 use Router\Http\Router;
 use Common\Env;
-use Database\Db;
 use Psr\Http\Message\ServerRequestInterface;
 use React\Http\Message\Response;
 use Routes\ErrorHandler;
-use Routes\Projects;
 
 require_once __DIR__ . "/vendor/autoload.php";
 
@@ -18,7 +19,8 @@ require_once __DIR__ . "/vendor/autoload.php";
 # |______ |  \_|   \/   __|__ |    \_ |_____| |  \_| |  |  | |______ |  \_|    |     #
 
 $env = Env::createFromJsonFile(__DIR__."/env.json");
-$env->db = new Db(JSON_PRETTY_PRINT);
+$env->driver = Driver::createSQLiteDriver(__DIR__."/db.sqlite")->connect();
+$env->cookie = new CookieController(new Encryption($env->cookies->passphrase, $env->cookies->algo));
 
 
 #  ______  _____  _     _ _______ _______  ______  #
@@ -34,17 +36,20 @@ $router = new Router(new SocketServer("{$env->server->ip}:{$env->server->port}")
 $env->blade = new BladeOne(realpath("./views"), realpath("./compiles"), BladeOne::MODE_SLOW); // change to MODE_FAST for production
 $env->blade->share("contact", [ "email" => "rsnedeker20@gmail.com", "discord" => "Command_String#6538" ]);
 $env->blade->share("socials", [ "github" => "https://github.com/commandstring" ]);
+
 #  ______  _____  _     _ _______ _______ _______ #
 # |_____/ |     | |     |    |    |______ |______ #
 # |    \_ |_____| |_____|    |    |______ ______| #
 $router
     ->beforeMiddleware("/(.*)", function (ServerRequestInterface $req, Closure $next) use ($env) {
         $res = new Response();
-        $isDev = $env->server->dev;
+        $cookie = $env->cookie->cookie($req, $res);
+
+        $isDev = ($cookie->get("dev") === $env->server->devSessionToken);
 
         $blade = Env::blade()->share("isDev", $isDev);
 
-        if (str_starts_with($req->getRequestTarget(), "/dev") && !$isDev) {
+        if (str_starts_with($req->getRequestTarget(), "/dev/") && !$isDev) {
             return ErrorHandler::handle404($req);
         }
 
@@ -54,11 +59,13 @@ $router
     ->get("/resume", function () {
         return new HtmlResponse(Env::blade()->run("resume"));
     })
-    ->get("/projects", [Projects::class, "main"])
-    ->get("/dev/projects/new", [Projects::class, "getNew"])
-    ->post("/dev/projects/new", [Projects::class, "postNew"])
-    ->get("/dev/projects/edit/{id}", [Projects::class, "getEdit"])
-    ->post("/dev/projects/edit/{id}", [Projects::class, "postEdit"])
+    ->get("/projects", [\Routes\Projects::class, "main"])
+    ->get("/dev/projects/new", [\Routes\Projects::class, "getNew"])
+    ->post("/dev/projects/new", [\Routes\Projects::class, "postNew"])
+    ->get("/dev/projects/edit/{id}", [\Routes\Projects::class, "getEdit"])
+    ->post("/dev/projects/edit/{id}", [\Routes\Projects::class, "postEdit"])
+    ->get("/dev", [\Routes\Dev::class, "get"])
+    ->post("/dev", [\Routes\Dev::class, "post"])
 
     // DO NOT ADD ROUTES BELOW THIS OR THEY WILL NOT WORK //
     ->get("/.*(".\Routes\Files\Files::generateRegex().")", [\Routes\Files\Files::class, "main"])
