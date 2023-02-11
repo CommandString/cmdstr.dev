@@ -3,102 +3,102 @@
 namespace Routes;
 
 use Carbon\Carbon;
-use CommandString\JsonDb\Exceptions\InvalidValue;
-use CommandString\JsonDb\Exceptions\UniqueRowViolation;
+use CommandString\Pdo\Sql\Operators;
+use CommandString\Utils\GeneratorUtils;
 use Common\Env;
 use eftec\bladeone\BladeOne;
 use HttpSoft\Response\HtmlResponse;
+use HttpSoft\Response\RedirectResponse;
 use InvalidArgumentException;
+use PDO;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Database\Projects\Projects as ProjectsDb;
-use HttpSoft\Response\RedirectResponse;
+use Throwable;
 
 class Projects {
-    public static function main(ServerRequestInterface $req, ResponseInterface $res, BladeOne $blade) {
-        $env = Env::get();
-
-        $projects = $env->db->projects;
-        $rows = $projects->newQuery()->execute();
+    public static function main(ServerRequestInterface $req, ResponseInterface $res, BladeOne $blade): ResponseInterface
+    {
+        $driver = Env::getDriver();
         $dateFormat = "n/j/Y";
 
-        usort($rows, function ($a, $b) {
-            return ($a->start < $b->start);
-        });
+        $result = $driver->select()->from("projects")->orderBy("start", Operators::DESCENDING)->execute();
 
-        foreach (array_keys($rows) as $key) {
-            $row = & $rows[$key];
-            $row = $row->jsonSerialize();
+        $rows = $result->fetchAll(PDO::FETCH_ASSOC);
 
+        foreach ($rows as &$row) {
             $row["start"] = (new Carbon($row["start"]))->format($dateFormat);
 
             if ($row["end"]) {
                 $row["end"] = (new Carbon($row["end"]))->format($dateFormat);
             }
         }
-
+        
         return new HtmlResponse($blade->run("projects", ["projects" => $rows]));
     }
 
-    public static function getNew(ServerRequestInterface $req, ResponseInterface $res, BladeOne $blade) {
+    public static function getNew(ServerRequestInterface $req, ResponseInterface $res, BladeOne $blade): ResponseInterface
+    {   
         return new HtmlResponse($blade->run("newProject"));
     }
 
-    public static function postNew(ServerRequestInterface $req, ResponseInterface $res, BladeOne $blade) {
-        $env = Env::get();
+    public static function postNew(ServerRequestInterface $req, ResponseInterface $res, BladeOne $blade): ResponseInterface
+    {
+        $driver = Env::getDriver();
 
         $post = $req->getParsedBody();
+        $query = $driver->insert()->into("projects");
 
-        $required = ["name", "start", "description"];
-        $optional = ["end", "link", "thumbnail"];
+        $required = ["name", "start", "description", "thumbnail"];
+        $optional = ["end", "link"];
+        $errors = [];
 
-        try {
-            $row = $env->db->projects->newRow();
+        foreach ($required as $key) {
+            $value = $post[$key] ?? "";
 
-            foreach ($required as $key) {
-                $value = $post[$key] ?? "";
-
-                if (empty($value)) {
-                    throw new InvalidArgumentException();
-                }
-
-                $row->setColumn($key, ($key === ProjectsDb::START) ? (new Carbon($value))->getTimestamp() : $value);
+            if (empty($value)) {
+                $errors[] = ucfirst($key)." is required!";
             }
 
-            foreach ($optional as $key) {
-                $value = $post[$key] ?? "";
-
-                if (!empty($value)) {
-                    $row->setColumn($key, ($key === ProjectsDb::END) ? (new Carbon($value))->getTimestamp() : $value);
-                }
+            if ($key === "start") {
+                $value = (new Carbon($value))->getTimestamp();
             }
 
-            $row->store();
-        } catch (InvalidArgumentException|InvalidValue|UniqueRowViolation $e) {
-            $dateFormat = "F n, Y";
-            $post->start = (new Carbon($post->start))->format($dateFormat);
-
-            if ($post->end) {
-                $post->end = (new Carbon($post->start))->format($dateFormat);
-            }
-
-            return new HtmlResponse($blade->run("newProject", ["post" => $post]));
+            $query->value($key, $value);
         }
 
-        return new RedirectResponse("/projects");
+        foreach ($optional as $key) {
+            $value = $post[$key] ?? "";
+
+            if (!empty($value)) {
+                if ($key === "end") {
+                    $value = (new Carbon($value))->getTimestamp();
+                }
+
+                $query->value($key, $value);
+            }
+        }
+
+        if (empty($errors)) {
+            $query->execute();
+            return new RedirectResponse("/projects");
+        } else {
+            return new HtmlResponse($blade->run("newProject", ["post" => $post, "errors" => $errors]));
+        }
     }
 
     public static function getEdit(ServerRequestInterface $req, ResponseInterface $res, $id, BladeOne $blade) {
         $env = Env::get();
 
-        $row = $env->db->projects->getRows()[$id] ?? null;
+        $driver = Env::getDriver();
 
-        if (is_null($row)) {
-            return new RedirectResponse("/projects");
+        $result = $driver->select()->from("projects")->where("id", Operators::EQUAL_TO, $id)->execute();
+
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return new RedirectResponse("/dev/projects/new");
         }
 
-        $row = $row->jsonSerialize();
-        
         $dateFormat = "F j, Y";
         $row["start"] = (new Carbon($row["start"]))->format($dateFormat);
 
@@ -110,46 +110,63 @@ class Projects {
     }
 
     public static function postEdit(ServerRequestInterface $req, ResponseInterface $res, $id, BladeOne $blade) {
-        $env = Env::get();
-
         $post = $req->getParsedBody();
 
         $required = ["name", "start", "description"];
         $optional = ["end", "link", "thumbnail"];
+        $driver = Env::getDriver();
 
-        try {
-            $row = $env->db->projects->getRows()[$id];
+        $query = "UPDATE projects SET";
+        $values = [];
+        $errors = [];
 
-            foreach ($required as $key) {
-                $value = $post[$key] ?? "";
+        foreach ($required as $key) {
+            $value = $post[$key] ?? "";
 
-                if (empty($value)) {
-                    throw new InvalidArgumentException;
-                }
-
-                $row->setColumn($key, ($key === ProjectsDb::START) ? (new Carbon($value))->getTimestamp() : $value);
+            if (empty($value)) {
+                $errors[] = ucfirst($key)." is required!";
             }
 
-            foreach ($optional as $key) {
-                $value = $post[$key] ?? "";
+            $valueId = GeneratorUtils::uuid(5);
+            $values[$valueId] = ($key === "start") ? (new Carbon($value))->getTimestamp() : $value;
 
-                if (!empty($value)) {
-                    $row->setColumn($key, ($key === ProjectsDb::END) ? (new Carbon($value))->getTimestamp() : $value);
-                }
-            }
-
-            $row->store();
-        } catch (InvalidArgumentException|InvalidValue $e) {
-            $dateFormat = "F j, Y";
-            $post->start = (new Carbon($post->start))->format($dateFormat);
-
-            if ($post->end) {
-                $post->end = (new Carbon($post->end))->format($dateFormat);
-            }
-
-            return new HtmlResponse($blade->run("newProject", ["post" => $post, "edit" => true]));
+            $query .= " $key = :$valueId,";
         }
 
-        return new RedirectResponse("/projects");
+        foreach ($optional as $key) {
+            $value = $post[$key] ?? "";
+            $valueId = GeneratorUtils::uuid(5);
+
+            if (!empty($value)) {
+                $values[$valueId] = ($key === "end") ? (new Carbon($value))->getTimestamp() : $value;
+
+                $query .= " $key = :$valueId,";
+            } else {
+                $query .= " $key = :$valueId,";
+                $values[$valueId] = null;
+            }
+        }
+
+        $query = substr($query, 0, -1);
+
+        $query .= " WHERE id = :id";
+
+        $values["id"] = $id;
+
+        if (empty($errors)) {
+            $driver->prepare($query);
+            $driver->execute($values);
+
+            return new RedirectResponse("/projects");
+        }
+
+        $dateFormat = "F j, Y";
+        $post['start'] = (new Carbon($post["start"]))->format($dateFormat);
+
+        if ($post['end']) {
+            $post['end'] = (new Carbon($post["end"]))->format($dateFormat);
+        }
+
+        return new HtmlResponse($blade->run("newProject", ["post" => $post, "edit" => true, "errors" => $errors]));
     }
 }

@@ -40,7 +40,7 @@
                     <div class="ui inverted calendar" id="end-date">
                         <div class="ui input left icon">
                             <i class="calendar icon"></i>
-                            <input type="text" @if ($post["end"]) value="{{ $post['end'] }}" @endif name="end" placeholder="End">
+                            <input type="text" @if ($post["end"] ?? false) value="{{ $post['end'] }}" @endif name="end" placeholder="End">
                         </div>
                     </div>
                 </div>
@@ -71,5 +71,14 @@
         $("#thumbnail").on("click", function () {
             $("[name='thumbnail']").click()
         });
+
+        @if (!empty($errors ?? []))
+        @foreach ($errors as $error)
+            $.toast({
+                "title": "{{ $error }}",
+                "class": "red"
+            });
+        @endforeach
+        @endif
     </script>
 @endsection

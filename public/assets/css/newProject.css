@@ -1,24 +1,24 @@
 body {
   background-color: black;
 }
-body > div {
+body > div:nth-child(1) {
   min-height: 100vh;
   background: linear-gradient(90deg, #8800FF60, black, black, black, black, black, black, black, black, #8800FF60) !important;
   padding-top: 50px;
 }
-body > div > form {
+body > div:nth-child(1) > form {
   width: 80%;
   margin: auto;
 }
-body > div > form .calendar {
+body > div:nth-child(1) > form .calendar {
   margin-top: 5px !important;
 }
-body > div > form .calendar i {
+body > div:nth-child(1) > form .calendar i {
   margin: 0 !important;
 }
-body > div span {
+body > div:nth-child(1) span {
   color: white;
 }
-body > div form span + input, body > div form span + textarea {
+body > div:nth-child(1) form span + input, body > div:nth-child(1) form span + textarea {
   margin-top: 5px !important;
 }

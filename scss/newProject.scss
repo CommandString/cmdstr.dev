@@ -2,7 +2,7 @@ body {
     background-color: black;
 }
 
-body > div {
+body > div:nth-child(1) {
     min-height: 100vh;
     background: linear-gradient(90deg, #8800FF60, black,black,black,black,black,black,black,black, #8800FF60) !important;
 
