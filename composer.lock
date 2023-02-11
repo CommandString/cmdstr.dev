@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f1fba40ea9b4f27872c59137738d2728",
+    "content-hash": "c4e932862369088648f67d65b806e1a4",
     "packages": [
         {
             "name": "commandstring/cookie-encryption",
@@ -152,6 +152,81 @@
                 "source": "https://github.com/CommandString/jsondb/tree/v1.1.1"
             },
             "time": "2023-02-05T17:28:25+00:00"
+        },
+        {
+            "name": "commandstring/pdo",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CommandString/Pdo.git",
+                "reference": "96c049fe0fe6d846169c8feee2f6b44d6fd8352a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CommandString/Pdo/zipball/96c049fe0fe6d846169c8feee2f6b44d6fd8352a",
+                "reference": "96c049fe0fe6d846169c8feee2f6b44d6fd8352a",
+                "shasum": ""
+            },
+            "require": {
+                "commandstring/utils": "^1.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CommandString\\Pdo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A PDO driver with additional features",
+            "support": {
+                "issues": "https://github.com/CommandString/Pdo/issues",
+                "source": "https://github.com/CommandString/Pdo/tree/v3.0.0"
+            },
+            "time": "2023-01-01T22:11:19+00:00"
+        },
+        {
+            "name": "commandstring/reactphp-cookies",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CommandString/ReactPHP-Cookies.git",
+                "reference": "cf33b8ae42edf586a02b9470cadb83585fb476ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CommandString/ReactPHP-Cookies/zipball/cf33b8ae42edf586a02b9470cadb83585fb476ff",
+                "reference": "cf33b8ae42edf586a02b9470cadb83585fb476ff",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "react/http": "^1.8"
+            },
+            "conflict": {
+                "commandstring/cookies": "*"
+            },
+            "suggest": {
+                "commandstring/cookie-encryption": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CommandString\\Cookies\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A simpler way to manipulate cookies in React/Http",
+            "support": {
+                "issues": "https://github.com/CommandString/ReactPHP-Cookies/issues",
+                "source": "https://github.com/CommandString/ReactPHP-Cookies/tree/v1.0.1"
+            },
+            "time": "2023-01-20T21:44:53+00:00"
         },
         {
             "name": "commandstring/router",
