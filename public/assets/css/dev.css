@@ -1,0 +1,15 @@
+body {
+  background-color: black;
+}
+body > div {
+  min-height: 100vh;
+  background: linear-gradient(90deg, #8800FF60, black, black, black, black, black, black, black, black, #8800FF60) !important;
+}
+body > div > .login {
+  background-color: transparent;
+  color: white;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
