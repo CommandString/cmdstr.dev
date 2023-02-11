@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c4e932862369088648f67d65b806e1a4",
+    "content-hash": "00d712113547bdd5e348516036602acc",
     "packages": [
         {
             "name": "commandstring/cookie-encryption",
@@ -120,51 +120,17 @@
             "time": "2022-12-19T19:14:57+00:00"
         },
         {
-            "name": "commandstring/jsondb",
-            "version": "v1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/CommandString/jsondb.git",
-                "reference": "c6b7bb2928fc2c7dc55e454d60f502805c3ee456"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/CommandString/jsondb/zipball/c6b7bb2928fc2c7dc55e454d60f502805c3ee456",
-                "reference": "c6b7bb2928fc2c7dc55e454d60f502805c3ee456",
-                "shasum": ""
-            },
-            "require": {
-                "commandstring/utils": "^1.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "CommandString\\JsonDb\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "An easier way to use JSON for a database",
-            "support": {
-                "issues": "https://github.com/CommandString/jsondb/issues",
-                "source": "https://github.com/CommandString/jsondb/tree/v1.1.1"
-            },
-            "time": "2023-02-05T17:28:25+00:00"
-        },
-        {
             "name": "commandstring/pdo",
-            "version": "v3.0.0",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CommandString/Pdo.git",
-                "reference": "96c049fe0fe6d846169c8feee2f6b44d6fd8352a"
+                "reference": "0192bc806835c9020be4781aab20206b9fedbe68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CommandString/Pdo/zipball/96c049fe0fe6d846169c8feee2f6b44d6fd8352a",
-                "reference": "96c049fe0fe6d846169c8feee2f6b44d6fd8352a",
+                "url": "https://api.github.com/repos/CommandString/Pdo/zipball/0192bc806835c9020be4781aab20206b9fedbe68",
+                "reference": "0192bc806835c9020be4781aab20206b9fedbe68",
                 "shasum": ""
             },
             "require": {
@@ -183,9 +149,9 @@
             "description": "A PDO driver with additional features",
             "support": {
                 "issues": "https://github.com/CommandString/Pdo/issues",
-                "source": "https://github.com/CommandString/Pdo/tree/v3.0.0"
+                "source": "https://github.com/CommandString/Pdo/tree/v3.1.1"
             },
-            "time": "2023-01-01T22:11:19+00:00"
+            "time": "2023-02-11T17:07:51+00:00"
         },
         {
             "name": "commandstring/reactphp-cookies",
@@ -2093,16 +2059,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.5.0",
+            "version": "v3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "3ffcf4b7d890770466da3b2666f82ac054e7ec72"
+                "reference": "a6e0510cc793912b451fd40ab983a1d28f611c15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3ffcf4b7d890770466da3b2666f82ac054e7ec72",
-                "reference": "3ffcf4b7d890770466da3b2666f82ac054e7ec72",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a6e0510cc793912b451fd40ab983a1d28f611c15",
+                "reference": "a6e0510cc793912b451fd40ab983a1d28f611c15",
                 "shasum": ""
             },
             "require": {
@@ -2153,7 +2119,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.5.0"
+                "source": "https://github.com/twigphp/Twig/tree/v3.5.1"
             },
             "funding": [
                 {
@@ -2165,7 +2131,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-27T12:28:18+00:00"
+            "time": "2023-02-08T07:49:20+00:00"
         }
     ],
     "packages-dev": [],

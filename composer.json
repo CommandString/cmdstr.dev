@@ -6,7 +6,7 @@
         "eftec/bladeone": "^4.8",
         "scssphp/scssphp": "^1.11",
         "nesbot/carbon": "^2.66",
-        "commandstring/pdo": "^3.0",
+        "commandstring/pdo": "v3.1.1",
         "commandstring/reactphp-cookies": "^1.0"
     },
     "autoload": {
